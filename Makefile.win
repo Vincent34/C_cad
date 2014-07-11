@@ -1,0 +1,46 @@
+# Project: graphics
+# Makefile created by Dev-C++ 5.6.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o exceptio.o genlib.o graphics.o random.o simpio.o strlib.o
+LINKOBJ  = main.o exceptio.o genlib.o graphics.o random.o simpio.o strlib.o
+LIBS     = -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
+INCS     = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"./include"
+CXXINCS  = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"./include"
+BIN      = graphics.exe
+CXXFLAGS = $(CXXINCS) -Wfatal-errors
+CFLAGS   = $(INCS) -Wfatal-errors
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+exceptio.o: exceptio.c
+	$(CC) -c exceptio.c -o exceptio.o $(CFLAGS)
+
+genlib.o: genlib.c
+	$(CC) -c genlib.c -o genlib.o $(CFLAGS)
+
+graphics.o: graphics.c
+	$(CC) -c graphics.c -o graphics.o $(CFLAGS)
+
+random.o: random.c
+	$(CC) -c random.c -o random.o $(CFLAGS)
+
+simpio.o: simpio.c
+	$(CC) -c simpio.c -o simpio.o $(CFLAGS)
+
+strlib.o: strlib.c
+	$(CC) -c strlib.c -o strlib.o $(CFLAGS)
